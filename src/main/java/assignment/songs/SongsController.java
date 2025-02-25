@@ -109,7 +109,7 @@ public class SongsController implements Initializable {
             player.stop();
         }
         String img = song.getImage();
-        Image songImage = new Image("file:src/main/resources/assignment/birds/images/" + img);
+        Image songImage = new Image("file:src/main/resources/assignment/songs/images/" + img);
         image.setImage(songImage);
         title.setText(song.getDataKey().getSongName());
         about.setText(song.getAbout());
@@ -126,7 +126,7 @@ public class SongsController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
 
-            stage.getIcons().add(new Image("file:src/main/resources/assignment/birds/images/UMIcon.png"));
+            stage.getIcons().add(new Image("file:src/main/resources/assignment/songs/images/UMIcon.png"));
             stage.setTitle("Dictionary Exception");
             controller.setAlertText(msg);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -190,7 +190,7 @@ public class SongsController implements Initializable {
     }
 
     public void play() {
-        String filename = "src/main/resources/assignment/birds/sounds/" + song.getSound();
+        String filename = "src/main/resources/assignment/songs/sounds/" + song.getSound();
         media = new Media(new File(filename).toURI().toString());
         player = new MediaPlayer(media);
         play.setDisable(true);
