@@ -125,12 +125,12 @@
                                 <Insets left="10.0" />
                             </HBox.margin>
                         </TextField>
-                        <Label text="Song Size">
+                        <Label text="Song Genre">
                             <HBox.margin>
                                 <Insets left="20.0" />
                             </HBox.margin>
                         </Label>
-                        <ComboBox fx:id="size" onAction="#getSize" prefHeight="27.0" prefWidth="144.0" visibleRowCount="3">
+                        <ComboBox fx:id="genre" onAction="#getGenre" prefHeight="27.0" prefWidth="144.0" visibleRowCount="3">
                             <HBox.margin>
                                 <Insets left="20.0" />
                             </HBox.margin>

@@ -44,14 +44,14 @@ public class SongsController implements Initializable {
     @FXML
     private Button puase;
     @FXML
-    private ComboBox size;
+    private ComboBox genre;
     @FXML
     private TextField name;
     Media media;
     MediaPlayer player;
     OrderedDictionary database = null;
     SongRecord song = null;
-    int songSize = 1;
+    int songGenre = 1;
 
     @FXML
     public void exit() {
@@ -60,7 +60,7 @@ public class SongsController implements Initializable {
     }
 
     public void find() {
-        DataKey key = new DataKey(this.name.getText(), songSize);
+        DataKey key = new DataKey(this.name.getText(), songGenre);
         try {
             song = database.find(key);
             showSong();
@@ -137,16 +137,25 @@ public class SongsController implements Initializable {
         }
     }
 
-    public void getSize() {
-        switch (this.size.getValue().toString()) {
-            case "Small":
-                this.songSize = 1;
+    public void getGenre() {
+        switch (this.genre.getValue().toString()) {
+            case "Soul":
+                this.songGenre = 1;
                 break;
-            case "Medium":
-                this.songSize = 2;
+            case "Hip-Hop":
+                this.songGenre = 2;
                 break;
-            case "Large":
-                this.songSize = 3;
+            case "Classic Rock":
+                this.songGenre = 3;
+                break;
+            case "Punk":
+                this.songGenre = 4;
+                break;
+            case "Pop":
+                this.songGenre = 5;
+                break;
+            case "Rock":
+                this.songGenre = 6;
                 break;
             default:
                 break;
@@ -244,10 +253,10 @@ public class SongsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         database = new OrderedDictionary();
-        size.setItems(FXCollections.observableArrayList(
-                "Small", "Medium", "Large"
+        genre.setItems(FXCollections.observableArrayList(
+                "Soul", "Hip-Hop", "Classic Rock", "Punk", "Pop", "Rock"
         ));
-        size.setValue("Small");
+        genre.setValue("Soul");
     }
 
 }

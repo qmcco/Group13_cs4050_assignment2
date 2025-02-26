@@ -2,7 +2,7 @@ package assignment.songs;
 
 public class DataKey {
 	private String songName;
-	private int songSize;
+	private int songGenre;
 
 	// default constructor
 	public DataKey() {
@@ -11,15 +11,15 @@ public class DataKey {
         
 	public DataKey(String name, int size) {
 		songName = name;
-		songSize = size;
+		songGenre = size;
 	}
 
 	public String getSongName() {
 		return songName;
 	}
 
-	public int getSongSize() {
-		return songSize;
+	public int getSongGenre() {
+		return songGenre;
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class DataKey {
 	 * than k, and it returns 1 otherwise. 
 	 */
 	public int compareTo(DataKey k) {
-            if (this.getSongSize() == k.getSongSize()) {
+            if (this.getSongGenre() == k.getSongGenre()) {
                 int compare = this.songName.compareTo(k.getSongName());
                 if (compare == 0){
                      return 0;
@@ -36,7 +36,7 @@ public class DataKey {
                     return -1;
                 }
             }
-            else if(this.getSongSize() < k.getSongSize()){
+            else if(this.getSongGenre() < k.getSongGenre()){
                     return -1;
             }
             return 1;
