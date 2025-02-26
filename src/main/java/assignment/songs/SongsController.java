@@ -14,6 +14,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+//import jdk.internal.icu.util.CodePointMap;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,6 +52,7 @@ public class SongsController implements Initializable {
     MediaPlayer player;
     OrderedDictionary database = null;
     SongRecord song = null;
+    int songSize = 1;
     int songGenre = 1;
 
     @FXML
@@ -60,7 +62,7 @@ public class SongsController implements Initializable {
     }
 
     public void find() {
-        DataKey key = new DataKey(this.name.getText(), songGenre);
+        DataKey key = new DataKey(this.name.getText(), songSize, songGenre);
         try {
             song = database.find(key);
             showSong();
@@ -72,19 +74,27 @@ public class SongsController implements Initializable {
     public void delete() {
         SongRecord previousSong = null;
         try {
-            previousSong = database.predecessor(song.getDataKey());
+            if (song.getDataKey() != null) {
+                previousSong = database.predecessor(song.getDataKey());
+            }
         } catch (DictionaryException ex) {
+
 
         }
         SongRecord nextSong = null;
         try {
-            nextSong = database.successor(song.getDataKey());
+            if (song.getDataKey() != null) {
+                nextSong = database.successor(song.getDataKey());
+            }
         } catch (DictionaryException ex) {
+
 
         }
         DataKey key = song.getDataKey();
         try {
-            database.remove(key);
+            if (key != null) {
+                database.remove(key);
+            }
         } catch (DictionaryException ex) {
             System.out.println("Error in delete "+ ex);
         }
@@ -222,20 +232,24 @@ public class SongsController implements Initializable {
             String songName = "";
             String description;
             int size = 0;
+            int genre = 0;
             input = new Scanner(new File("SongsDatabase.txt"));
             while (input.hasNext()) // read until  end of file
             {
                 String data = input.nextLine();
-                switch (line % 3) {
+                switch (line % 4) {
                     case 0:
                         size = Integer.parseInt(data);
                         break;
                     case 1:
+                        genre = Integer.parseInt(data);
+                        break;
+                    case 2:
                         songName = data;
                         break;
                     default:
                         description = data;
-                        database.insert(new SongRecord(new DataKey(songName, size), description, songName + ".mp3", songName + ".jpg"));
+                        database.insert(new SongRecord(new DataKey(songName, size, genre), description, songName + ".mp3", songName + ".jpg"));
                         break;
                 }
                 line++;

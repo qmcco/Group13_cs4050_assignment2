@@ -25,7 +25,7 @@ public class OrderedDictionary implements OrderedDictionaryADT {
         }
 
         while (true) {
-            comparison = current.getData().getDataKey().compareTo(k);
+            comparison = current.getData().getDataKey().compareGenreTo(k);
             if (comparison == 0) { // key found
                 return current.getData();
             }
@@ -115,8 +115,13 @@ public class OrderedDictionary implements OrderedDictionaryADT {
         Node successor = null;
 
         while (current != null) {
-            int comparison = current.getData().getDataKey().compareTo(k);
-
+            int comparison;
+            if (current.getData().getDataKey() != null) {
+                comparison = current.getData().getDataKey().compareTo(k);
+            }
+            else{
+                comparison = 0;
+            }
             if (comparison > 0) {
                 successor = current;
                 current = current.getLeftChild();
@@ -182,7 +187,13 @@ public class OrderedDictionary implements OrderedDictionaryADT {
         Node predecessor = null;
 
         while (current != null) {
-            int comparison = current.getData().getDataKey().compareTo(k);
+            int comparison;
+            if (current.getData().getDataKey() != null) {
+                comparison = current.getData().getDataKey().compareTo(k);
+            }
+            else{
+                comparison = 0;
+            }
 
             if (comparison < 0) {
                 predecessor = current;
