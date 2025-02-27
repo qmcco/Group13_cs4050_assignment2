@@ -15,7 +15,7 @@ public class Songs extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("birds-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("songs-view.fxml"));
 
         Scene scene = new Scene(root);
 

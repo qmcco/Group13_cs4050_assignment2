@@ -14,7 +14,7 @@ public class OrderedDictionary implements OrderedDictionaryADT {
      *
      * @param k
      * @return
-     * @throws assignment/birds/DictionaryException.java
+     * @throws assignment/songs/DictionaryException.java
      */
     @Override
     public SongRecord find(DataKey k) throws DictionaryException {
@@ -25,7 +25,7 @@ public class OrderedDictionary implements OrderedDictionaryADT {
         }
 
         while (true) {
-            comparison = current.getData().getDataKey().compareGenreTo(k);
+            comparison = current.getData().getDataKey().compareTo(k);
             if (comparison == 0) { // key found
                 return current.getData();
             }
