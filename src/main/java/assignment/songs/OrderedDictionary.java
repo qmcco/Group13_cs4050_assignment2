@@ -25,7 +25,7 @@ public class OrderedDictionary implements OrderedDictionaryADT {
         }
 
         while (true) {
-            comparison = current.getData().getDataKey().compareTo(k);
+            comparison = current.getData().getDataKey().compareGenreTo(k);
             if (comparison == 0) { // key found
                 return current.getData();
             }

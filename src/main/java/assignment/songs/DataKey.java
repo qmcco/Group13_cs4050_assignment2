@@ -31,7 +31,7 @@ public class DataKey {
 	 * than k, and it returns 1 otherwise. 
 	 */
 	public int compareTo(DataKey k) {
-            if (this.getSongGenre() == k.getSongGenre()) {
+            if (this.getSongSize() == k.getSongSize()) {
                 int compare = this.songName.toLowerCase().compareTo(k.songName.toLowerCase());
                 if (compare == 0 || this.songName.toLowerCase().contains(k.songName.toLowerCase())) {
                      return 0;
@@ -40,9 +40,24 @@ public class DataKey {
                     return -1;
                 }
             }
-            else if(this.getSongGenre() < k.getSongGenre()){
+            else if(this.getSongSize() < k.getSongSize()){
                     return -1;
             }
             return 1;
+	}
+	public int compareGenreTo(DataKey k) {
+		if (this.getSongGenre() == k.getSongGenre()) {
+			int compare = this.songName.toLowerCase().compareTo(k.songName.toLowerCase());
+			if (compare == 0 || this.songName.toLowerCase().contains(k.songName.toLowerCase())) {
+				return 0;
+			}
+			else if(this.getSongSize() < k.getSongSize()){
+				return 1;
+			}
+		}
+		else if(this.getSongSize() < k.getSongSize()){
+			return 1;
+		}
+		return -1;
 	}
 }
