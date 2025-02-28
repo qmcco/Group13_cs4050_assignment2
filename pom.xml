@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>assignment</groupId>
-    <artifactId>Group13_cs4050_Assignment2</artifactId>
+    <artifactId>group13_cs4050_assignment2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Birds</name>
 
@@ -112,7 +112,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>assignment.songs/Group13_cs4050_assignment2.songs.Songs</mainClass>
+                            <mainClass>assignment.songs/Group13_cs4050_Assignment2.songs.Songs</mainClass>
                         </configuration>
                     </execution>
                 </executions>

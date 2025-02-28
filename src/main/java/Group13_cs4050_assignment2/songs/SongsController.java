@@ -46,6 +46,7 @@ public class SongsController implements Initializable {
     private Button puase;
     @FXML
     private ComboBox genre;
+    /** Label which displays the genre of the current song */
     @FXML
     private Label genreLabel;
     @FXML
@@ -55,6 +56,7 @@ public class SongsController implements Initializable {
     OrderedDictionary database = null;
     SongRecord song = null;
     int songSize = 1;
+    /** Initial song genre value set to 0, or "Null"*/
     int songGenre = 0;
 
     @FXML
@@ -177,7 +179,7 @@ public class SongsController implements Initializable {
                 break;
         }
     }
-
+    /** Find element in the database with the smallest size value, which indicates it is in the first position */
     public void first() {
         try {
             song = database.smallest();
@@ -186,7 +188,7 @@ public class SongsController implements Initializable {
             displayAlert("No songs in the database.");
         }
     }
-
+    /** Find element in the database with the largest size value, indicating it is in the last position */
     public void last() {
         try {
             song = database.largest();
@@ -195,7 +197,7 @@ public class SongsController implements Initializable {
             displayAlert("No songs in the database.");
         }
     }
-
+    /** Retrieve the data key of the successor of the current song, then, using that data key, set song equal to the successor */
     public void next() {
         try {
             song = database.successor(song.getDataKey());
@@ -204,7 +206,7 @@ public class SongsController implements Initializable {
             displayAlert("No next song available.");
         }
     }
-
+    /** Same as above, but for predecessor */
     public void previous() {
         try {
             song = database.predecessor(song.getDataKey());
@@ -242,6 +244,7 @@ public class SongsController implements Initializable {
             input = new Scanner(new File("SongsDatabase.txt"));
             while (input.hasNext()) // read until  end of file
             {
+                /** Parse 4 lines at a time to retrieve size, genre, name, and about */
                 String data = input.nextLine();
                 switch (line % 4) {
                     case 0:
@@ -269,7 +272,7 @@ public class SongsController implements Initializable {
         this.SongPortal.setVisible(true);
         this.first();
     }
-
+    /** Initialize combobox genre to Null, when set to Null, users can search for songs without worrying about genre restrictions on the search */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         database = new OrderedDictionary();

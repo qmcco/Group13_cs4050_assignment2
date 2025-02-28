@@ -66,6 +66,11 @@ public class DataKey {
             }
             return 1;
 	}
+
+	/** Compare specifically for genre searching, if the genre is either matching or 0, then string match the current and passed values,
+	 * if the strings do not match, then as long as the current song size is less than the passed song size, return 1,
+	 * if the strings do match, return 0. If the genres do not match, compare size, if the size of current is less, return 1, otherwise return -1 */
+	 */
 	public int compareGenreTo(DataKey k) {
 		if ((k.getSongGenre() == 0) | (this.getSongGenre() == k.getSongGenre())) {
 			int compare = this.songName.toLowerCase().compareTo(k.songName.toLowerCase());

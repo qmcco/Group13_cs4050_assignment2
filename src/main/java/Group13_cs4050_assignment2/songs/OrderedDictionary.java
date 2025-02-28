@@ -53,8 +53,10 @@ public class OrderedDictionary implements OrderedDictionaryADT {
      * @param r
      * @throws songs.DictionaryException
      */
+    /** Insert a new song record into the database */
     @Override
     public void insert(SongRecord r) throws DictionaryException {
+        /** If the root is empty, insert the passed song record at root */
         Node newNode = new Node(r);
         if (root.isEmpty()) {
             root = newNode;
@@ -64,7 +66,9 @@ public class OrderedDictionary implements OrderedDictionaryADT {
         Node current = root;
         Node parent = null;
         int comparison;
-
+        /** compare the current value to the passed song record
+         * if the passed song record's size is smaller, then current goes to the left, otherwise goes to the right,
+         * given the child on either side is not null*/
         while (current != null) {
             comparison = current.getData().getDataKey().compareTo(r.getDataKey());
             parent = current;
@@ -95,6 +99,7 @@ public class OrderedDictionary implements OrderedDictionaryADT {
      * @param k
      * @throws songs.DictionaryException
      */
+    /** Initial call of recursive remove function */
     @Override
     public void remove(DataKey k) throws DictionaryException {
         root = removeRecursive(root, k);
@@ -109,11 +114,13 @@ public class OrderedDictionary implements OrderedDictionaryADT {
      * @return
      * @throws songs.DictionaryException
      */
+    /** Find the successor of the passed song DataKey */
     @Override
     public SongRecord successor(DataKey k) throws DictionaryException{
         Node current = root;
         Node successor = null;
-
+        /** compare the passed song datakey to the root, if the passed datakey is greater, then go to the right, otherwise go left,
+         * and set the value to the left to be the successor */
         while (current != null) {
             int comparison;
             if (current.getData().getDataKey() != null) {
@@ -136,6 +143,8 @@ public class OrderedDictionary implements OrderedDictionaryADT {
         return successor.getData();
     }
 
+    /** Compare the current node to the passed song DataKey k, then go left or right based on that comparison
+     * until a null position is found, then return the empty position as a replacement for the node to be removed */
     private Node removeRecursive(Node current, DataKey k) throws DictionaryException {
         if (current == null || current.isEmpty()) {
             throw new DictionaryException("No such record key exists.");
@@ -163,7 +172,7 @@ public class OrderedDictionary implements OrderedDictionaryADT {
         }
         return current;
     }
-
+    /** Go left until the node with the smallest size value is found */
     private Node findSmallest(Node node) {
         while (node.getLeftChild() != null) {
             node = node.getLeftChild();
@@ -181,11 +190,12 @@ public class OrderedDictionary implements OrderedDictionaryADT {
      * @return
      * @throws songs.DictionaryException
      */
+    /** Compare the values of the root node and the values of the passed song DataKey k to find the successor */
     @Override
     public SongRecord predecessor(DataKey k) throws DictionaryException{
         Node current = root;
         Node predecessor = null;
-
+        /** if the passed dataKey k value is greater, go to the left and set the value of the predecessor to the current value, otherwise go right */
         while (current != null) {
             int comparison;
             if (current.getData().getDataKey() != null) {
@@ -215,6 +225,7 @@ public class OrderedDictionary implements OrderedDictionaryADT {
      *
      * @return
      */
+    /** go left until the next value to the left is Null, to get the smallest value */
     @Override
     public SongRecord smallest() throws DictionaryException{
         if (root.isEmpty()) {
@@ -233,6 +244,7 @@ public class OrderedDictionary implements OrderedDictionaryADT {
 	 * Returns the record with largest key in the ordered dictionary. Returns
 	 * null if the dictionary is empty.
      */
+    /** go right until the next value to the right is null to get the largest value */
     @Override
     public SongRecord largest() throws DictionaryException{
         if (root.isEmpty()) {
