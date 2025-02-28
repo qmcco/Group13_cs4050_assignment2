@@ -46,7 +46,7 @@ public class DataKey {
             return 1;
 	}
 	public int compareGenreTo(DataKey k) {
-		if (this.getSongGenre() == k.getSongGenre()) {
+		if ((k.getSongGenre() == 0) | (this.getSongGenre() == k.getSongGenre())) {
 			int compare = this.songName.toLowerCase().compareTo(k.songName.toLowerCase());
 			if (compare == 0 || this.songName.toLowerCase().contains(k.songName.toLowerCase())) {
 				return 0;

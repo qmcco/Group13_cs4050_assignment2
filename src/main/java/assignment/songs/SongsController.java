@@ -53,7 +53,7 @@ public class SongsController implements Initializable {
     OrderedDictionary database = null;
     SongRecord song = null;
     int songSize = 1;
-    int songGenre = 1;
+    int songGenre = 0;
 
     @FXML
     public void exit() {
@@ -149,6 +149,9 @@ public class SongsController implements Initializable {
 
     public void getGenre() {
         switch (this.genre.getValue().toString()) {
+            case "Null":
+                this.songGenre = 0;
+                break;
             case "Soul":
                 this.songGenre = 1;
                 break;
@@ -268,9 +271,9 @@ public class SongsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         database = new OrderedDictionary();
         genre.setItems(FXCollections.observableArrayList(
-                "Soul", "Hip-Hop", "Classic Rock", "Punk", "Pop", "Rock"
+                "Null","Soul", "Hip-Hop", "Classic Rock", "Punk", "Pop", "Rock"
         ));
-        genre.setValue("Soul");
+        genre.setValue("Null");
     }
 
 }
