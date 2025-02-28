@@ -1,4 +1,4 @@
-package assignment.songs;
+package Group13_cs4050_assignment2.songs;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -121,7 +121,7 @@ public class SongsController implements Initializable {
             player.stop();
         }
         String img = song.getImage();
-        Image songImage = new Image("file:src/main/resources/assignment/songs/images/" + img);
+        Image songImage = new Image("file:src/main/resources/Group13_cs4050_assignment2/songs/images/" + img);
         image.setImage(songImage);
         title.setText(song.getDataKey().getSongName());
         about.setText(song.getAbout());
@@ -139,7 +139,7 @@ public class SongsController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
 
-            stage.getIcons().add(new Image("file:src/main/resources/assignment/songs/images/UMIcon.png"));
+            stage.getIcons().add(new Image("file:src/main/resources/Group13_cs4050_assignment2/songs/images/UMIcon.png"));
             stage.setTitle("Dictionary Exception");
             controller.setAlertText(msg);
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -215,7 +215,7 @@ public class SongsController implements Initializable {
     }
 
     public void play() {
-        String filename = "src/main/resources/assignment/songs/sounds/" + song.getSound();
+        String filename = "src/main/resources/Group13_cs4050_assignment2/songs/sounds/" + song.getSound();
         media = new Media(new File(filename).toURI().toString());
         player = new MediaPlayer(media);
         play.setDisable(true);

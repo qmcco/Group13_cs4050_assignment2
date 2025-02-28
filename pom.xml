@@ -112,7 +112,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>assignment.songs/assignment.songs.Songs</mainClass>
+                            <mainClass>assignment.songs/Group13_cs4050_assignment2.songs.Songs</mainClass>
                         </configuration>
                     </execution>
                 </executions>

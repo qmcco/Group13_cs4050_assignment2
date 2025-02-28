@@ -1,4 +1,4 @@
-package assignment.songs;
+package Group13_cs4050_assignment2.songs;
 
 /**
  * a class Node to represent the nodes of the binary search tree. Each node will

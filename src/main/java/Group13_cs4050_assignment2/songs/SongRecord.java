@@ -1,4 +1,4 @@
-package assignment.songs;
+package Group13_cs4050_assignment2.songs;
 
 /**
  * This class represents a song record in the database. Each record consists of two

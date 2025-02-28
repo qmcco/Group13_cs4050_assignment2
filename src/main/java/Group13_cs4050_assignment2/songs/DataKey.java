@@ -1,4 +1,4 @@
-package assignment.songs;
+package Group13_cs4050_assignment2.songs;
 
 public class DataKey {
 	private String songName;
