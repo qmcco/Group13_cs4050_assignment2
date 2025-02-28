@@ -24,7 +24,28 @@ public class DataKey {
 		return songSize;
 	}
 
-	public int getSongGenre() {return songGenre;}
+	public int getSongGenre() {
+		return songGenre;
+	}
+
+	public String getSongGenreString(){
+		switch (songGenre) {
+			case 1:
+				return "Soul";
+			case 2:
+				return "Hip-Hop";
+			case 3:
+				return "Classic Rock";
+			case 4:
+				return "Punk";
+			case 5:
+				return "Pop";
+			case 6:
+				return "Rock";
+			default:
+				return "Unknown";
+		}
+	}
 
 	/**
 	 * Returns 0 if this DataKey is equal to k, returns -1 if this DataKey is smaller

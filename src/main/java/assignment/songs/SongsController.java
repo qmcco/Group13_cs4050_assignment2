@@ -47,6 +47,8 @@ public class SongsController implements Initializable {
     @FXML
     private ComboBox genre;
     @FXML
+    private Label genreLabel;
+    @FXML
     private TextField name;
     Media media;
     MediaPlayer player;
@@ -123,6 +125,7 @@ public class SongsController implements Initializable {
         image.setImage(songImage);
         title.setText(song.getDataKey().getSongName());
         about.setText(song.getAbout());
+        genreLabel.setText("Genre: " + song.getDataKey().getSongGenreString());
     }
 
     private void displayAlert(String msg) {
